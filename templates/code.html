@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>Chess Images</title>
+    <title>Ninja Gold</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='javascript/my_script.js') }}">
@@ -15,34 +15,49 @@
     <div class="wrapper">
         <div class="header">
             <p>Your Gold</p>
-            <div>0</div>
+            <div>{{session['gold']}}</div>
         </div>
         <div class="boxes">
             <div>
                 <h4>Farm</h4>
                 <p>earn</p>
-                <button>Find Gold!</button>
+                <form action="/process_money" method="post">
+                    <input type="hidden" name="building" value="farm" />
+                    <input type="submit" value="Find Gold!" />
+                </form>
             </div>
             <div>
                 <h4>Cave</h4>
                 <p>earn</p>
-                <button>Find Gold!</button>
+                <form action="/process_money" method="post">
+                    <input type="hidden" name="building" value="cave" />
+                    <input type="submit" value="Find Gold!" />
+                </form>
             </div>
             <div>
                 <h4>House</h4>
                 <p>earn</p>
-                <button>Find Gold!</button>
+                <form action="/process_money" method="post">
+                    <input type="hidden" name="building" value="house" />
+                    <input type="submit" value="Find Gold!" />                
+                </form>
             </div>
             <div>
                 <h4>Casino</h4>
                 <p>earn</p>
-                <button>Find Gold!</button>
+                <form action="/process_money" method="post">
+                    <input type="hidden" name="building" value="Casino" />
+                    <input type="submit" value="Find Gold!" />
+                </form>
             </div>
         </div>
         <div class="footer">
             <p>Activities: </p>
             <div>
-                <p>example text</p>
+                <p> {% for event in session['events']: %}
+                        <p>{{event}}<p>
+                    {% endfor %}
+                </p>
             </div>
         </div>
     </div>
